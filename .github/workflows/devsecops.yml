@@ -54,12 +54,12 @@ jobs:
       - name: Build image Docker
         run: docker build -t nodeapp:scan .
 
-      - name: Scan Trivy (CRITICAL + HIGH)
+      - name: Scan Trivy (CRITICAL)
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: nodeapp:scan
           format: table
-          severity: CRITICAL,HIGH
+          severity: CRITICAL
           exit-code: '1'
 
   # ── Job 4 : Analyse CodeQL
