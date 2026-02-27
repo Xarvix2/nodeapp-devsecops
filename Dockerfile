@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM ghcr.io/oven-sh/node:25-alpine
 
 WORKDIR /app
 
@@ -7,12 +7,6 @@ RUN npm ci --only=production
 
 COPY app.js .
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
-
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=5s \
-    CMD wget -qO- http://localhost:3000/health || exit 1
 
 CMD ["node", "app.js"]
-
