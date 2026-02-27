@@ -1,4 +1,4 @@
-FROM ghcr.io/oven-sh/node:25-alpine
+FROM node:25-alpine
 
 WORKDIR /app
 
